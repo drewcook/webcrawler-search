@@ -1,17 +1,20 @@
 {
-  "name": "webcrawler-search",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-		"lint": "npx prettier --config ./prettier.config.js **/*.* --check",
-    "lint:fix": "npx prettier --config ./prettier.config.js **/*.* --write"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "altheajs-prettier-config": "^1.2.0",
-    "prettier": "2.2.1"
-  }
+	"name": "webcrawler-search",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"lint": "npx prettier --config ./prettier.config.js ./*.* --check",
+		"lint:fix": "npx prettier --config ./prettier.config.js ./*.* --write"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"altheajs-prettier-config": "^1.2.0",
+		"prettier": "2.2.1"
+	},
+	"dependencies": {
+		"jsdom": "^16.7.0"
+	}
 }
