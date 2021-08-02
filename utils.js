@@ -16,15 +16,21 @@ const compilePageText = pageDom => {
 	let results = []
 	const nodes = pageDom.getElementsByTagName('*')
 
-	// for (var i = 0; i < domNodes.length; i++) {
-	// 	console.log(nodes[i].textContent)
+	// for (var i = 0; i < nodes.length; i++) {
+	// 	const text = nodes[i].textContent
+	// 	if (text.length > 0) results.push(text)
 	// }
 
 	function helper(input) {
-		if (input.length === 0) {
-			return input.textContent
+		console.log(input.children)
+		if (input.children.length === 0) {
+			console.log('no child')
+			results.push(input.textContent.replace(/[\n\r\t]/g, '').trim())
+		} else {
+			console.log(input.children)
+			// input.children.forEach(child => helper(child))
+			// helper(input.children)
 		}
-		return input.textContent + helper(input.children)
 	}
 
 	helper(pageDom)
