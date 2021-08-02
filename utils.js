@@ -27,7 +27,19 @@ const checkForTerm = (document, term) => {
 		const word = pageText[i]
 		if (word.toLowerCase() === term.toLowerCase()) {
 			occurrances++
-			results.push(`${pageText[i - 1]} ${word} ${pageText[i + 1]}`)
+			let msg
+			switch (i) {
+				case 0:
+					msg = `${word} ${pageText[i + 1]}`
+					break
+				case pageText.length - 1:
+					msg = `${pageText[i - 1]} ${word}`
+					break
+				default:
+					msg = `${pageText[i - 1]} ${word} ${pageText[i + 1]}`
+					break
+			}
+			results.push(msg)
 		}
 	}
 
