@@ -15,7 +15,7 @@ node . [url] [keyword]
 
 
 # Example - search Apple website for keyword 'reimagined'
-node index.js https://www.apple.com reimagined
+node . https://www.apple.com reimagined
 ```
 
 _NOTE: This project is incomplete_
