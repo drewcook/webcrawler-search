@@ -1,6 +1,6 @@
 const http = require('http')
 const https = require('https')
-const checkForTerm = require('./checkForTerm.js')
+const { parseHTMLPage, checkForTerm } = require('./checkForTerm.js')
 
 const URL = process.argv[2]
 const TERM = process.argv[3]
@@ -36,10 +36,7 @@ fetcher
 		// Subscribe to the automatically invoked res.end() from the http.get() method.
 		res.on('end', () => {
 			try {
-				const { document } = new JSDOM(rawData, {
-					url: URL,
-					contentType: 'text/html',
-				}).window
+				const document = parseHTMLPage(rawData, URL)
 				const resp = checkForTerm(document, TERM)
 				console.log(resp) // ['text content', 'more text content', 'button text'] ...etc
 
@@ -51,7 +48,7 @@ fetcher
 						count++
 						const previousWordIdx = text.split(' ').indexOf(TERM) - 1
 						const nextWordIdx = text.split(' ').indexOf(TERM) + 1
-						results.push(`${text[previousWordIdx]} ${TERM} ${nextWordIdx}`)
+						results.push(`${text[previousWordIdx]} ${TERM} ${text[nextWordIdx]}`)
 					}
 				}
 				for (const result of results) {

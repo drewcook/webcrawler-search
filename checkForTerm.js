@@ -1,11 +1,18 @@
 const { JSDOM } = require('jsdom')
+
+const parseHTMLPage = (pageData, url) => {
+	const { document } = new JSDOM(pageData, {
+		url,
+		contentType: 'text/html',
+	}).window
+	return document
+}
+
 const checkForTerm = (document, term) => {
 	let results = []
-	let texts = []
+	let texts = ['mock', 'data', 'apple', 'reimagined']
 	// Traversal - we're only choosing to parse what is in the <body> tag to speed up the process
 	const body = document.body
-
-	return
 
 	// TODO: UGH - too much time using a bad URL to test my JSDOM parsing resulted in me not finishing the traversal part
 	// for (const child of body.children) {
@@ -22,6 +29,8 @@ const checkForTerm = (document, term) => {
 	// 		}
 	// 	}
 	// }
+
+	return texts
 }
 
 // TODO: use recursion to traverse and compile all the HTML inner texts into an array
@@ -37,4 +46,7 @@ const recurse = domSlice => {
 	}
 }
 
-module.exports = checkForTerm
+module.exports = {
+	parseHTMLPage,
+	checkForTerm,
+}
