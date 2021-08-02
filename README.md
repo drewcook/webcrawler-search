@@ -8,7 +8,7 @@ This project contains code for a CLI-based web crawler. You can search any valid
 
 ## Usage
 
-Since this is a CLI tool, you must use a terminal to run the program.  Ensure that your PWD is the root directory of this project.
+Since this is a CLI tool, you must use a terminal to run the program. Ensure that your PWD is the root directory of this project.
 
 ```bash
 node . [url] [keyword]

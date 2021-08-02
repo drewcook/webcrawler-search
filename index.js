@@ -41,9 +41,24 @@ fetcher
 					contentType: 'text/html',
 				}).window
 				const resp = checkForTerm(document, TERM)
-				console.log(resp)
+				console.log(resp) // ['text content', 'more text content', 'button text'] ...etc
+
+				// Iterate and compile results, send back to stout
+				let count = 0
+				let results = []
+				for (const text of resp) {
+					if (text.includes(TERM)) {
+						count++
+						const previousWordIdx = text.split(' ').indexOf(TERM) - 1
+						const nextWordIdx = text.split(' ').indexOf(TERM) + 1
+						results.push(`${text[previousWordIdx]} ${TERM} ${nextWordIdx}`)
+					}
+				}
+				for (const result of results) {
+					console.log(result)
+				}
 			} catch (e) {
-				console.error('huh', e.message)
+				console.error(`Parsing error: ${e.message}`)
 			}
 		})
 	})
