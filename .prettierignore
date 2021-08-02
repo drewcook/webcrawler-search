@@ -1,0 +1,16 @@
+## Artifacts
+node_modules
+
+## File extensions - declarative approach
+*.*
+!*.css
+!*.scss
+!*.js
+!*.json
+!*.jsx
+!*.less
+!*.md
+!*.mdx
+!*.ts
+!*.tsx
+!*.yml
