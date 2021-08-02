@@ -34,3 +34,8 @@ const checkForTerm = (document, term) => {
 		console.log(`Occurrance found: ${result}`)
 	}
 }
+
+module.exports = {
+	parseHTMLPage,
+	checkForTerm,
+}
