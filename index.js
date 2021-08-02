@@ -1,6 +1,6 @@
 const http = require('http')
 const https = require('https')
-const { parseHTMLPage, checkForTerm } = require('./checkForTerm.js')
+const { parseHTMLPage, checkForTerm } = require('./utils.js')
 
 const URL = process.argv[2]
 const TERM = process.argv[3]
