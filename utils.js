@@ -11,6 +11,27 @@ const parseHTMLPage = (pageData, url) => {
 	return document
 }
 
+// Use recursion to traverse and compile all the HTML inner texts into an array
+const compilePageText = pageDom => {
+	let results = []
+	const nodes = pageDom.getElementsByTagName('*')
+
+	// for (var i = 0; i < domNodes.length; i++) {
+	// 	console.log(nodes[i].textContent)
+	// }
+
+	function helper(input) {
+		if (input.length === 0) {
+			return input.textContent
+		}
+		return input.textContent + helper(input.children)
+	}
+
+	helper(pageDom)
+
+	return results
+}
+
 const checkForTerm = (document, term) => {
 	// Traversal - we're only choosing to parse what is in the <body> tag to speed up the process
 	const texts = compilePageText(document.body)
